@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Prashob Nair</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0e0e0e;
+    --bg-card: #111111;
+    --bg-card-alt: #161616;
+    --border: #222222;
+    --border-mid: #2a2a2a;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --text-muted: #666666;
+    --text-dim: #444444;
+    --accent: #5DCAA5;
+    --accent-bg: #1a2a24;
+    --accent-text: #04342C;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text-secondary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .site {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* NAV */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-bottom: 0.5px solid var(--border-mid);
+    position: sticky;
+    top: 0;
+    background: rgba(14,14,14,0.95);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+  }
+
+  .nav-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .nav-logo {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-primary);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    color: var(--text-muted);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text-primary); }
+
+  /* HERO */
+  .hero {
+    padding: 80px 0 64px;
+    border-bottom: 0.5px solid var(--border-mid);
+  }
+
+  .hero-tag {
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-size: 44px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.12;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero p {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 500px;
+    line-height: 1.75;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 12px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    padding: 10px 22px;
+    background: var(--accent);
+    color: var(--accent-text);
+    font-size: 13px;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-secondary {
+    padding: 10px 22px;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 13px;
+    border: 0.5px solid #333;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-secondary:hover { color: var(--text-primary); border-color: #555; }
+
+  /* SECTIONS */
+  section {
+    padding: 56px 0;
+    border-bottom: 0.5px solid var(--border-mid);
+  }
+
+  .section-label {
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+
+  /* NOW */
+  .now-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+  }
+
+  .now-card {
+    background: var(--bg-card);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .now-card h4 {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+  }
+
+  .now-card p {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  /* RESUME */
+  .resume-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+  }
+
+  .resume-card {
+    background: var(--bg-card-alt);
+    border: 0.5px solid var(--border-mid);
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .resume-card h3 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+  }
+
+  .resume-card p { font-size: 12px; color: var(--text-muted); }
+
+  .resume-card .year {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 10px;
+  }
+
+  /* WRITING */
+  .articles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .article-item {
+    background: var(--bg-card);
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    transition: background 0.15s;
+  }
+
+  .article-item:hover { background: #161616; }
+
+  .article-title {
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  .article-meta {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+
+  .article-tag {
+    font-size: 11px;
+    background: var(--accent-bg);
+    color: var(--accent);
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* TWO COL */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+
+  .belief-item { margin-bottom: 24px; }
+
+  .belief-item h4 {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+  }
+
+  .belief-item p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  /* LINKS */
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+  }
+
+  .link-card {
+    background: var(--bg-card);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+    transition: border-color 0.2s;
+    cursor: pointer;
+  }
+
+  .link-card:hover { border-color: #444; }
+
+  .link-card .link-icon {
+    font-size: 18px;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .link-card h4 {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+  }
+
+  .link-card p {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* PRIVATE */
+  .private-box {
+    background: var(--bg-card);
+    border: 0.5px solid var(--border-mid);
+    border-radius: 10px;
+    padding: 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .lock-icon { font-size: 28px; color: var(--text-dim); flex-shrink: 0; }
+
+  .private-box h3 {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  .private-box p { font-size: 13px; color: var(--text-dim); }
+
+  /* FOOTER */
+  footer {
+    padding: 28px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  footer p { font-size: 12px; color: var(--text-dim); }
+
+  .footer-links { display: flex; gap: 20px; }
+
+  .footer-links a {
+    font-size: 12px;
+    color: var(--text-dim);
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--text-muted); }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 30px; }
+    .nav-links { gap: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-wrap">
+    <div class="nav-logo">Prashob Nair</div>
+    <ul class="nav-links">
+      <li><a href="#now">Now</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#japan-kerala">Japan & Kerala</a></li>
+      <li><a href="#finance">Finance</a></li>
+      <li><a href="#links">Links</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="site">
+
+  <div class="hero">
+    <div class="hero-tag">Senior Professional · Yokohama, Japan</div>
+    <h1>Engineering leader.<br>Writer. Thinker.</h1>
+    <p>I work at the intersection of technology and strategy. I write about leadership, life in Japan, and things that make me curious.</p>
+    <div class="hero-btns">
+      <a href="#writing" class="btn-primary">Read my writing</a>
+      <a href="#now" class="btn-secondary">What I'm doing now →</a>
+    </div>
+  </div>
+
+  <section id="now">
+    <div class="section-label">Now</div>
+    <div class="now-grid">
+      <div class="now-card">
+        <h4>International school search</h4>
+        <p>Navigating applications for two kids across Yokohama and Tokyo — IB curriculum, commute, culture fit.</p>
+      </div>
+      <div class="now-card">
+        <h4>Deploying savings into NISA</h4>
+        <p>Post tax payment in November, moving idle USD into broad global index funds via NISA.</p>
+      </div>
+      <div class="now-card">
+        <h4>Land in Kerala</h4>
+        <p>Scoping a plot in Pantheerankavu, Kozhikode — foundation for a retirement return around 55.</p>
+      </div>
+      <div class="now-card">
+        <h4>Writing more</h4>
+        <p>Starting with the Nihon Kairali index fund story. LinkedIn first, then Substack.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="resume">
+    <div class="section-label">Resume</div>
+    <div class="resume-grid">
+      <div class="resume-card">
+        <h3>Marvell Technology</h3>
+        <p>Senior Engineer · Yokohama</p>
+        <div class="year">2020 – Present</div>
+      </div>
+      <div class="resume-card">
+        <h3>Education</h3>
+        <p>Management & Engineering</p>
+        <div class="year">Kerala, India</div>
+      </div>
+      <div class="resume-card">
+        <h3>Community</h3>
+        <p>Board Member, Nihon Kairali NPO</p>
+        <div class="year">Yokohama</div>
+      </div>
+      <div class="resume-card">
+        <h3>Interests</h3>
+        <p>Finance · Education · Writing</p>
+        <div class="year">Always</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="writing">
+    <div class="section-label">Writing</div>
+    <div class="articles-list">
+      <div class="article-item">
+        <div>
+          <div class="article-title">How a Kerala diaspora NPO started investing in index funds</div>
+          <div class="article-meta">June 2026 · 6 min read</div>
+        </div>
+        <div class="article-tag">Finance</div>
+      </div>
+      <div class="article-item">
+        <div>
+          <div class="article-title">Raising kids in Japan as a non-Japanese family</div>
+          <div class="article-meta">May 2026 · 4 min read</div>
+        </div>
+        <div class="article-tag">Life</div>
+      </div>
+      <div class="article-item">
+        <div>
+          <div class="article-title">What I've learned about patience from living in Japan</div>
+          <div class="article-meta">Draft</div>
+        </div>
+        <div class="article-tag">Reflection</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="japan-kerala">
+    <div class="section-label">Japan & Kerala</div>
+    <div class="two-col">
+      <div>
+        <div class="belief-item">
+          <h4>15+ years in Yokohama</h4>
+          <p>Non-Japanese citizen, four investment properties, two kids in international schools. Japan is home.</p>
+        </div>
+        <div class="belief-item">
+          <h4>Community</h4>
+          <p>Board member of Nihon Kairali — a Kerala diaspora NPO building financial and cultural roots in Japan.</p>
+        </div>
+      </div>
+      <div>
+        <div class="belief-item">
+          <h4>Retiring to Kerala at 55</h4>
+          <p>The plan: return to Kozhikode, build something in Pantheerankavu, and teach management.</p>
+        </div>
+        <div class="belief-item">
+          <h4>Kerala connection</h4>
+          <p>Deep roots, regular visits, and a long-term commitment to giving back through education.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="finance">
+    <div class="section-label">Finance</div>
+    <div class="two-col">
+      <div>
+        <div class="belief-item">
+          <h4>Index funds, always</h4>
+          <p>Broad global index funds beat active management over time. eMAXIS Slim All Country is my default recommendation.</p>
+        </div>
+        <div class="belief-item">
+          <h4>Max your tax wrappers first</h4>
+          <p>NISA and iDeCo before anything else. The government subsidy is free money.</p>
+        </div>
+      </div>
+      <div>
+        <div class="belief-item">
+          <h4>Real estate as tax strategy</h4>
+          <p>Japanese investment properties work best when depreciation offsets income. Understand your cliff dates.</p>
+        </div>
+        <div class="belief-item">
+          <h4>Think in decades</h4>
+          <p>RSUs, properties, pension, NISA — each has a role across a 20-year horizon. Map it out.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="links">
+    <div class="section-label">Links</div>
+    <div class="links-grid">
+      <div class="link-card">
+        <div class="link-icon">📊</div>
+        <h4>eMAXIS Slim All Country</h4>
+        <p>The index fund I recommend to everyone</p>
+      </div>
+      <div class="link-card">
+        <div class="link-icon">🏢</div>
+        <h4>Nihon Kairali</h4>
+        <p>Kerala community in Japan</p>
+      </div>
+      <div class="link-card">
+        <div class="link-icon">📚</div>
+        <h4>Curated reads</h4>
+        <p>Finance, Japan, education — coming soon</p>
+      </div>
+      <div class="link-card">
+        <div class="link-icon">🔗</div>
+        <h4>More links</h4>
+        <p>Updated as I find things worth sharing</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Private</div>
+    <div class="private-box">
+      <div class="lock-icon">🔒</div>
+      <div>
+        <h3>Family photos</h3>
+        <p>This page is unlisted — shared only with people you give the link to. Not indexed, not linked from anywhere public. <a href="./private.html" style="color: var(--accent);">Access here →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Prashob Nair · Yokohama, Japan</p>
+    <div class="footer-links">
+      <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+      <a href="mailto:your@email.com">Email</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
